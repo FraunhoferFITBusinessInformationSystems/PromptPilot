@@ -25,7 +25,7 @@ bun run dev
 bunx lefthook install
 ```
 
-# Aufbau der Anwendungen 
+# What to know 
 
 ## Tools 
 We use the following tools: 
@@ -43,3 +43,4 @@ We use the following tools:
 - [components](./components) All recurring components of the application are stored here.
     - Every component that is used across multiple pages is stored here.
 - [lib](./lib) All frequently used functions and types are stored here.
+
