@@ -1,15 +1,17 @@
 # How to develop? 
 
-Wir nutzen biome zum formaten des Codes mit Tab-indent (Size: 2). Bitte vs-code dementsprechend konfigurieren. 
+Install Supabase (https://supabase.com/) as backend Service and NodeJS as webservice hosting the code.
 
 1. Clone git-repository 
 ```bash
 git clone
 ```
-3. Create .env-File 
+2. Create .env-File 
 ```bash
 cp .env.example .env.local
 ```
+3. Create table in Supabase with included SQL-File 
+
 4. Install dependencies
 ```bash
 bun install
@@ -26,21 +28,18 @@ bunx lefthook install
 # Aufbau der Anwendungen 
 
 ## Tools 
-Wir nutzten: 
-- Next.js 15 für alle Wohlfühl-Funktionen rund um React. Dazu gehören das File-based routing, Authentifizierung, etc. 
-- Supabase typescript client zum Interface mit Supabase. Die Implementierung hierzu findet sich im utils/supbase-Ordner
-    - Hier werden auch die aus Supabase generierten Types abgespeichert. Unter supabase/database.ts. Sollten Änderungen an der DB vorgenommen werdne, muss auch dieses File angepasst werden. 
-    - Die Authentifizierung ist sowohl Server als auch Client-Seitig implmentiert. ==Achtung: Es muss bei client-pages die client Implementierung und bei server-pages die server Implementierung geladen werden. 
-- Shadcn/ui für alle gestylten components. 
-- Tailwindcsss zum spezifischen styling von components. 
-- React-Hook-Forms in Verbindung mit Zod zum validieren und aufbauen von Forms. 
+We use the following tools: 
+- Next.js 15. 
+- Supabase typescript client for interfacing with Supabase. The implementation for this can be found in the utils/supbase folder
+    - The types generated from Supabase are also stored here. Under supabase/database.ts. If changes are made to the DB, this file must also be adjusted.
+    - Authentication is implemented on both the server and client sides. ==Attention: The client implementation must be loaded for client pages and the server implementation for server pages.
+- Shadcn/ui for all styled components.
+- Tailwindcsss for specific styling of components.
+- React-Hook-Forms in conjunction with Zod for validating and building forms.
 
-## Aufbau
-- [app](./app) hier liegen alle Pages ab.
-    - Gleiche Pages werden unter ()-Ordner zusammengefasst. 
-    - Jedes Form/jede Liste sind gleich aufgebaut. 
-    - Components, welche nur in einer spezifischen Page aufgerufen werden, liegen im selben Ordern wie die Pages. 
-    - Unter actions auf der obersten Ebene liegen alle Select-Items-Actions ab. 
-- [componets](./components) hier liegen alle wiederkehrenden Components der Anwendung ab. 
-    - Jeder Component der über mehrere Pages verwendet wird, liegt hier ab. 
-- [lib](./lib) hier liegen alle oft verwendeten Funktionen und Typen ab. 
+## Structure
+- [app](./app) here are all pages.
+    - Components that are only called up on a specific page are located in the same folder as the pages.
+- [components](./components) All recurring components of the application are stored here.
+    - Every component that is used across multiple pages is stored here.
+- [lib](./lib) All frequently used functions and types are stored here.
